@@ -1,0 +1,78 @@
+{
+  "projects": [
+    {
+      "name": "FoundersLab",
+      "type": "Intelligent Startup Incubation Platform",
+      "description": "An online incubator that connects founders with investors, mentors, and the resources to grow — from idea to funded momentum.",
+      "stack": ["Angular", "Spring Boot", "MySQL", "OpenStack", "Docker", "Kubernetes", "Machine Learning startup scoring", "CI/CD", "Prometheus", "Grafana"],
+      "highlights": [
+        "Full-stack SaaS platform where founders build a profile.",
+        "Machine-learning based startup scoring system.",
+        "Founders are matched with relevant investors and mentors.",
+        "Deployed on a personal private cloud with CI/CD and observability."
+      ],
+      "demo": "https://lnkd.in/p/eUiWEGzm"
+    },
+    {
+      "name": "StackPilot",
+      "type": "Cloud Infrastructure & DevOps",
+      "description": "A private cloud infrastructure built to host production platforms — provisioned, automated, and monitored end to end.",
+      "stack": ["OpenStack", "Terraform", "Ansible", "Docker", "Kubernetes", "CI/CD", "Prometheus", "Grafana"],
+      "highlights": [
+        "Private OpenStack cloud infrastructure.",
+        "Infrastructure as code with Terraform and Ansible.",
+        "Kubernetes orchestration for services.",
+        "Hosts and deploys the FoundersLab platform."
+      ]
+    },
+    {
+      "name": "AutoMatch",
+      "type": "AI Car Valuation System",
+      "description": "A real-time Machine Learning API for car valuation and prediction.",
+      "stack": ["Flask", "Regression", "Classification", "Clustering", "Next.js"],
+      "highlights": [
+        "Real-time ML API with classification, regression and clustering models.",
+        "Dynamic Next.js frontend for prediction visualization.",
+        "Deployed on Vercel with seamless API integration."
+      ]
+    },
+    {
+      "name": "AI Psychometric Assessment Platform",
+      "type": "Intelligence Systems",
+      "description": "An AI-powered psychometric assessment platform with automated analysis pipelines.",
+      "stack": ["Django", "Python", "AI pipelines"],
+      "highlights": [
+        "Automated analysis pipelines for assessment data.",
+        "AI-assisted profile reports.",
+        "Guided, multilingual assessment flows."
+      ]
+    },
+    {
+      "name": "FITSYNC",
+      "type": "Sports Management Platform",
+      "description": "A sports management platform for tournaments, teams, and athlete performance.",
+      "stack": ["Java", "Symfony", "JavaFX", "MySQL"],
+      "highlights": [
+        "Tournament and team management modules.",
+        "Athlete performance tracking.",
+        "Modern, interactive JavaFX interfaces."
+      ]
+    },
+    {
+      "name": "FYP Cooked",
+      "type": "AI Browser Extension",
+      "description": "Your FYP, explained. A private AI analysis of the reels you actually watch — no guesses, just the algorithm's receipts. A browser extension that analyzes each Instagram Reel with on-device AI and shows exactly what your feed is doing to your brain, all locally.",
+      "stack": ["Browser extension", "On-device AI", "Local-first", "JavaScript"],
+      "highlights": [
+        "Brainrot Index: real-time score of how algorithmically cooked your feed is (0–100).",
+        "Touch Grass Score: a reality check on how much time you're actually spending scrolling.",
+        "Your Wrapped: a polished, story-like recap of your weekly feed vibe.",
+        "AI Breakdown: each reel scored on hook power, educational value, brainrot level, and more.",
+        "Gallery: every reel you've watched, filterable by mood, category, cooked score, and date.",
+        "Personalized recommendations based on your actual viewing patterns.",
+        "Achievements: unlock badges as you watch (or don't watch)."
+      ],
+      "demo": "https://github.com/fatma2708/fyp-analyzer"
+    }
+  ]
+}

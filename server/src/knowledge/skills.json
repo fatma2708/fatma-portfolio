@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "category": "Cloud",
+      "skills": ["Docker", "Kubernetes", "Terraform", "Ansible", "OpenStack", "CI/CD", "Linux"]
+    },
+    {
+      "category": "Backend",
+      "skills": ["Spring Boot", "Flask", "Django", "REST APIs"]
+    },
+    {
+      "category": "Frontend",
+      "skills": ["Angular", "Next.js", "JavaFX"]
+    },
+    {
+      "category": "Machine Learning",
+      "skills": ["Regression", "Classification", "Clustering", "Decision Trees", "Pandas", "NumPy"]
+    },
+    {
+      "category": "Programming",
+      "skills": ["Python", "Java", "JavaScript", "PHP", "C#", "C", "C++"]
+    },
+    {
+      "category": "Design",
+      "skills": ["UI", "UX", "Graphic Design"]
+    }
+  ]
+}

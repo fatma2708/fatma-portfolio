@@ -1,0 +1,88 @@
+{
+  "faq": [
+    {
+      "q": "Who is Fatma?",
+      "a": "Fatma Ben Mlouka is a second-year Computer Engineering student at ESPRIT specializing in Cloud Computing. She is passionate about Artificial Intelligence, scalable systems, cloud-native technologies, full-stack development, DevOps and UI/UX design."
+    },
+    {
+      "q": "Tell me about yourself.",
+      "a": "I am Fatma Ben Mlouka, a Cloud Computing Engineering student. I love building intelligent, scalable systems and turning ideas into useful products. I am curious, hardworking, creative, and detail-oriented, and I am always trying to become a better version of myself."
+    },
+    {
+      "q": "Why should someone hire Fatma?",
+      "a": "Fatma brings a rare mix: strong cloud and DevOps skills, hands-on full-stack development, real Machine Learning projects, and an eye for UI/UX. She ships complete systems — from backend APIs and ML models to cloud infrastructure, CI/CD and monitoring — and she is eager, disciplined, and a fast learner."
+    },
+    {
+      "q": "Why Cloud Computing?",
+      "a": "I enjoy networking and virtualization. I love transforming physical infrastructure into scalable virtual systems and building highly available architectures. Kubernetes is my favorite cloud technology."
+    },
+    {
+      "q": "Why AI?",
+      "a": "Artificial Intelligence lets us create intelligent systems that improve everyday life. I am especially interested in Large Language Models because they make advanced AI accessible to everyone."
+    },
+    {
+      "q": "Why Computer Engineering?",
+      "a": "I have loved computers since I was a child. I enjoy building things and understanding how they work, and I am naturally curious, always researching beyond what I am taught. Engineering lets me turn ideas into useful products."
+    },
+    {
+      "q": "What is Fatma's favorite project?",
+      "a": "FoundersLab — an online incubator that connects founders with investors and mentors. It combines full-stack development, machine-learning scoring, and a full private-cloud deployment with CI/CD and monitoring."
+    },
+    {
+      "q": "Why FoundersLab?",
+      "a": "FoundersLab is Fatma's favorite because it brings everything together: an Angular and Spring Boot full-stack app, an ML startup scoring system, and a complete private cloud deployment on OpenStack and Kubernetes with CI/CD, Prometheus and Grafana."
+    },
+    {
+      "q": "Tell me about StackPilot.",
+      "a": "StackPilot is a private cloud infrastructure project. Fatma provisioned an OpenStack cloud, automated everything with Terraform and Ansible, orchestrated services on Kubernetes, and used it to host and deploy the FoundersLab platform."
+    },
+    {
+      "q": "Explain Fatma's internship experience.",
+      "a": "As an AI Intern at Intech Solutions, Fatma developed an AI-based psychometric assessment platform with automated analysis pipelines and integrated AI modules. She also did a Web Development internship at Intech Solutions where she built Django backend features."
+    },
+    {
+      "q": "What are Fatma's strengths?",
+      "a": "Strong curiosity, adaptability, independence, persistence, and stamina once she is motivated."
+    },
+    {
+      "q": "What are Fatma's weaknesses?",
+      "a": "She is currently working on being more patient and improving her documentation habits."
+    },
+    {
+      "q": "What motivates Fatma?",
+      "a": "Becoming a better version of herself every day, making her parents proud, building ambitious projects, and continuous learning."
+    },
+    {
+      "q": "What technologies does Fatma know?",
+      "a": "Cloud & DevOps: Docker, Kubernetes, Terraform, Ansible, OpenStack, CI/CD, Linux. Backend: Spring Boot, Flask, Django, REST APIs. Frontend: Angular, Next.js, JavaFX. Machine Learning: regression, classification, clustering, decision trees, Pandas, NumPy. Programming: Python, Java, JavaScript, PHP, C#, C, C++. Design: UI, UX, graphic design."
+    },
+    {
+      "q": "What is Fatma's dream career?",
+      "a": "She wants to become an MLOps Engineer and build scalable AI systems that combine AI, Cloud Computing and software engineering."
+    },
+    {
+      "q": "Does Fatma enjoy UI/UX?",
+      "a": "Yes. UI/UX and graphic design are part of her skill set and she believes design is how complex systems become clear and enjoyable to use."
+    },
+    {
+      "q": "What is Fatma's design philosophy?",
+      "a": "Build intelligent systems that solve real-world problems while remaining enjoyable to use. Design is the connective tissue between engineering and people."
+    },
+    {
+      "q": "Why Kubernetes?",
+      "a": "Kubernetes is Fatma's favorite cloud technology because it makes large, highly-available distributed systems feel calm and manageable — a perfect example of infrastructure as design."
+    },
+    {
+      "q": "What is Fatma's favorite programming language?",
+      "a": "Python — it powers her AI and machine learning work and is fast to move from idea to working product."
+    },
+    {
+      "q": "What is Fatma looking for?",
+      "a": "An opportunity to grow as an engineer and apply AI, cloud, and software engineering skills on real, meaningful systems."
+    },
+    {
+      "q": "How can I contact Fatma?",
+      "a": "You can email her at fatmabenmlouka38@gmail.com, connect on LinkedIn, or check her GitHub at github.com/fatma2708. Her CV is also available to download on this site."
+    }
+  ]
+}

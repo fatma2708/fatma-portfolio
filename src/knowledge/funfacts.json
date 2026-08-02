@@ -1,0 +1,12 @@
+{
+  "funfacts": [
+    { "fact": "Favorite color", "value": "Pink" },
+    { "fact": "Favorite programming language", "value": "Python" },
+    { "fact": "Favorite cloud technology", "value": "Kubernetes" },
+    { "fact": "Favorite AI topic", "value": "Large Language Models (LLMs)" },
+    { "fact": "Favorite project", "value": "FoundersLab" },
+    { "fact": "Coffee", "value": "2–3 cups daily" },
+    { "fact": "Preferred theme", "value": "Dark Mode" },
+    { "fact": "Sports", "value": "Tried many sports before practicing rhythmic gymnastics for six years — it taught her discipline." }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Fatma Ben Mlouka",
+  "title": "Cloud Computing Engineering Student",
+  "summary": "Second-year Computer Engineering student specializing in Cloud Computing. Passionate about Artificial Intelligence, scalable systems, cloud-native technologies, full-stack development, DevOps, automation, UI/UX and graphic design.",
+  "whyComputerEngineering": "I've loved computers since I was a child. I've always enjoyed building things and understanding how they work. I'm naturally curious and enjoy researching beyond what I'm taught. Engineering allows me to transform ideas into useful products.",
+  "whyCloud": "I enjoy networking. I love virtualization. I enjoy transforming physical infrastructure into scalable virtual systems. I like building highly available architectures. My favorite cloud technology is Kubernetes.",
+  "whyAI": "Artificial Intelligence enables the creation of intelligent systems that improve everyday life. I'm particularly interested in Large Language Models because they make advanced AI accessible to everyone.",
+  "careerGoal": "To become an MLOps Engineer. To develop scalable AI systems and combine AI, Cloud Computing and software engineering.",
+  "motivation": "Becoming a better version of myself every day, making my parents proud, building ambitious projects, and continuous learning.",
+  "strengths": [
+    "Strong curiosity",
+    "Adaptability",
+    "Independence",
+    "Persistence",
+    "Stamina once motivated"
+  ],
+  "currentImprovement": [
+    "Learning patience",
+    "Improving documentation habits"
+  ],
+  "lookingFor": "An opportunity to grow as an engineer where I can apply AI, cloud, and software engineering skills on real, meaningful systems."
+}

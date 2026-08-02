@@ -1,0 +1,15 @@
+node_modules
+build
+.git
+.github
+.gitignore
+.dockerignore
+.env
+.env.*
+*.log
+coverage
+server
+public/profile.json
+public/blogs.json
+Dockerfile
+nginx.conf

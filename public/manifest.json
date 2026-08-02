@@ -1,0 +1,31 @@
+{
+  "short_name": "FATMA OS",
+  "name": "FATMA OS — Fatma Ben Mlouka",
+  "description": "The interactive portfolio of Fatma Ben Mlouka — AI engineer, cloud engineer, and designer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0f12",
+  "theme_color": "#0d0f12",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png?v8=qAJ44G5Bm7",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png?v8=qAJ44G5Bm7",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-192x192.png?v8=qAJ44G5Bm7",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/android-chrome-384x384.png?v8=qAJ44G5Bm7",
+      "type": "image/png",
+      "sizes": "384x384"
+    }
+  ]
+}

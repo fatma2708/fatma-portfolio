@@ -1,0 +1,32 @@
+{
+  "experiences": [
+    {
+      "role": "AI Intern",
+      "company": "Intech Solutions",
+      "period": "07/2025 – 08/2025",
+      "details": [
+        "Developed an AI-based psychometric assessment platform.",
+        "Designed automated AI analysis pipelines.",
+        "Integrated AI modules into the platform."
+      ]
+    },
+    {
+      "role": "Web Development Intern",
+      "company": "Intech Solutions",
+      "period": "08/2023 – 09/2023",
+      "details": [
+        "Developed backend features using Django."
+      ]
+    },
+    {
+      "role": "Media Manager",
+      "company": "IEEE RAS ESPRIT SBC",
+      "period": "2023 – 2024",
+      "details": [
+        "Managed branding and media strategy.",
+        "Created media content (photos, videos, highlights).",
+        "Covered workshops, competitions, and conferences."
+      ]
+    }
+  ]
+}
