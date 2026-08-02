@@ -61,7 +61,7 @@ cp .env.example .env         # add GEMINI_API_KEY if you want Gemini
 npm run dev                  # http://localhost:4000
 ```
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for production deployment and [POST_DEPLOYMENT_CHECKLIST.md](POST_DEPLOYMENT_CHECKLIST.md) for post-deploy verification.
+Deployment is handled by Vercel (frontend) and Railway (backend); CI/CD runs on GitHub Actions.
 
 ## Contact
 
