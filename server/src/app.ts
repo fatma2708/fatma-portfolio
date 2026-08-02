@@ -33,6 +33,13 @@ export function createApp(deps: AppDependencies): express.Express {
   const { config, logger } = deps;
 
   const app = express();
+  app.get("/test-fatma", (_req, res) => {
+  res.json({
+    ok: true,
+    message: "This is the correct backend",
+    version: "2026-08-02"
+  });
+});
   app.disable("x-powered-by");
   app.set("trust proxy", config.trustProxy);
 
