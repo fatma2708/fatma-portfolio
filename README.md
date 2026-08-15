@@ -4,7 +4,7 @@ Hi, I'm **Fatma** — a second-year Computer Engineering student at **ESPRIT**, 
 
 This is the repo of my personal portfolio, **FATMA OS**, a playful desktop-style website where you can explore my projects, skills, experience and more — and ask my AI assistant, **F.A.I.**, about anything you want to know.
 
-> Live site: [https://fatma-portfolio.vercel.app](https://fatma-portfolio.vercel.app)
+> Live site: [https://fatma-portfolio.vercel.app](https://fatma-portfolio-cyan.vercel.app)
 
 ## About me
 
