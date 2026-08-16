@@ -9,7 +9,7 @@ function makeConfig(partial: Partial<AppConfig> = {}): AppConfig {
     port: 4000,
     host: "127.0.0.1",
     groqApiKey: "test-key",
-    groqModel: "llama-3.3-70b-versatile",
+    groqModel: "meta-llama/llama-4-scout-17b-16e-instruct",
     groqTemperature: 0.6,
     groqMaxTokens: 1024,
     groqTimeoutMs: 5000,
@@ -77,7 +77,7 @@ describe("GroqService", () => {
     await service.generateText(input);
 
     const requestBody = JSON.parse(String(fetchMock.mock.calls[0][1].body));
-    expect(requestBody.model).toBe("llama-3.3-70b-versatile");
+    expect(requestBody.model).toBe("meta-llama/llama-4-scout-17b-16e-instruct");
     expect(requestBody.temperature).toBe(0.6);
   });
 
