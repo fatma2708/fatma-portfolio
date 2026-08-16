@@ -27,6 +27,7 @@ This is the repo of my personal portfolio, **FATMA OS**, a playful desktop-style
 
 ## Experience
 
+- **Cloud & DevOps Intern** — FelCloud (07/2025 – Present): cloud infrastructure, DevOps practices, CI/CD pipelines and automation
 - **AI Intern** — Intech Solutions (07/2025 – 08/2025): developed an AI-based psychometric assessment platform with automated analysis pipelines
 - **Web Development Intern** — Intech Solutions (08/2023 – 09/2023): built backend features with Django
 - **Media Manager** — IEEE RAS ESPRIT SBC (2023 – 2024): branding, media strategy and event coverage

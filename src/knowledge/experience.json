@@ -1,6 +1,16 @@
 {
   "experiences": [
     {
+      "role": "Cloud & DevOps Intern",
+      "company": "FelCloud",
+      "period": "07/2025 – Present",
+      "details": [
+        "Working on cloud infrastructure and DevOps practices.",
+        "Managing and optimizing cloud environments.",
+        "Implementing CI/CD pipelines and automation workflows."
+      ]
+    },
+    {
       "role": "AI Intern",
       "company": "Intech Solutions",
       "period": "07/2025 – 08/2025",
