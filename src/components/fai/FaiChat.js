@@ -174,31 +174,25 @@ export default function FaiChat() {
           ]);
         }
       } catch (error) {
-        if (error instanceof FaiApiError && error.code === "TIMEOUT") {
-          setMessages(previous =>
-            previous.map(m =>
-              m.id === pendingId
-                ? {...m, text: "It took too long to respond. Please try again.", loading: false}
-                : m
-            )
-          );
-        } else if (error instanceof FaiApiError && error.code === "NETWORK") {
-          setMessages(previous =>
-            previous.map(m =>
-              m.id === pendingId
-                ? {...m, text: "I can't reach my server right now. Please try again later.", loading: false}
-                : m
-            )
-          );
-        } else {
-          setMessages(previous =>
-            previous.map(m =>
-              m.id === pendingId
-                ? {...m, text: "Something went wrong. Please try again.", loading: false}
-                : m
-            )
-          );
+        let errorText = "Something went wrong. Please try again.";
+        if (error instanceof FaiApiError) {
+          if (error.code === "TIMEOUT") {
+            errorText = "It took too long to respond. Please try again.";
+          } else if (error.code === "NETWORK") {
+            errorText = "I can't reach my server right now. Please try again later.";
+          } else if (error.code === "RATE_LIMIT" || error.code === "QUOTA_EXCEEDED") {
+            errorText = "I'm getting a lot of questions right now. Please wait a moment and try again.";
+          } else if (error.message) {
+            errorText = error.message;
+          }
         }
+        setMessages(previous =>
+          previous.map(m =>
+            m.id === pendingId
+              ? {...m, text: errorText, loading: false}
+              : m
+          )
+        );
       } finally {
         setLoading(false);
         abortRef.current = null;
