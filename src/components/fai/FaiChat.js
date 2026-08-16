@@ -1,9 +1,20 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import {gsap} from "gsap";
-import {ChevronDown, Copy, Sparkles, Trash2, X} from "lucide-react";
-import {QUESTION_GROUPS, WELCOME, findAnswer} from "../../knowledge";
+import {Copy, Send, Sparkles, Trash2, X} from "lucide-react";
+import {WELCOME} from "../../knowledge";
+import {chat, FaiApiError} from "../../services/api";
+import {usePage} from "../../contexts/PageContext";
 import {renderMarkdown} from "./markdown";
 import "./fai.scss";
+
+const SUGGESTIONS = [
+  "Who are you?",
+  "What projects has Fatma built?",
+  "What are Fatma's skills?",
+  "How can I contact Fatma?",
+  "What is Fatma's experience?",
+  "What are Fatma's career goals?"
+];
 
 function useReducedMotion() {
   const [reduced, setReduced] = useState(false);
@@ -28,15 +39,19 @@ const WELCOME_ID = "fai-welcome";
 
 export default function FaiChat() {
   const reduced = useReducedMotion();
+  const {section: currentSection, project: currentProject} = usePage();
 
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([{id: WELCOME_ID, role: "assistant", text: WELCOME}]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
   const [copiedId, setCopiedId] = useState(null);
 
   const windowRef = useRef(null);
   const buttonRef = useRef(null);
-  const selectRef = useRef(null);
+  const inputRef = useRef(null);
   const scrollRef = useRef(null);
+  const abortRef = useRef(null);
 
   useEffect(() => {
     if (!open || reduced) return undefined;
@@ -62,7 +77,7 @@ export default function FaiChat() {
 
   useEffect(() => {
     if (open) {
-      if (selectRef.current) selectRef.current.focus();
+      if (inputRef.current) inputRef.current.focus();
     } else if (buttonRef.current) {
       buttonRef.current.focus();
     }
@@ -72,11 +87,10 @@ export default function FaiChat() {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   }, [messages, open]);
 
-  const openChat = () => {
-    setOpen(true);
-  };
+  const openChat = () => setOpen(true);
 
   const closeChat = () => {
+    if (abortRef.current) abortRef.current.abort();
     if (reduced || !windowRef.current) {
       setOpen(false);
       return;
@@ -93,8 +107,10 @@ export default function FaiChat() {
   };
 
   const clearChat = () => {
+    if (abortRef.current) abortRef.current.abort();
+    setLoading(false);
     setMessages([{id: WELCOME_ID, role: "assistant", text: WELCOME}]);
-    if (selectRef.current) selectRef.current.focus();
+    if (inputRef.current) inputRef.current.focus();
   };
 
   const copyMessage = async (id, text) => {
@@ -115,18 +131,96 @@ export default function FaiChat() {
     setTimeout(() => setCopiedId(current => (current === id ? null : current)), 1600);
   };
 
-  const ask = question => {
-    const text = String(question || "").trim();
-    if (!text) return;
-    const userMessage = {id: uid(), role: "user", text};
-    const assistantMessage = {id: uid(), role: "assistant", text: findAnswer(text)};
-    setMessages(previous => [...previous, userMessage, assistantMessage]);
+  const ask = useCallback(
+    async text => {
+      const trimmed = String(text || "").trim();
+      if (!trimmed || loading) return;
+
+      const userMessage = {id: uid(), role: "user", text: trimmed};
+      const pendingId = uid();
+      const pendingMessage = {id: pendingId, role: "assistant", text: "", loading: true};
+
+      setMessages(previous => [...previous, userMessage, pendingMessage]);
+      setInput("");
+      setLoading(true);
+
+      const controller = new AbortController();
+      abortRef.current = controller;
+
+      try {
+        const history = messages
+          .filter(m => m.id !== WELCOME_ID && !m.loading)
+          .map(m => ({role: m.role === "user" ? "user" : "assistant", content: m.text}));
+
+        const data = await chat({
+          message: trimmed,
+          conversationHistory: history,
+          currentSection,
+          currentProject,
+          signal: controller.signal
+        });
+
+        setMessages(previous =>
+          previous.map(m =>
+            m.id === pendingId ? {...m, text: data.response, loading: false} : m
+          )
+        );
+
+        if (data.followUpSuggestions && data.followUpSuggestions.length) {
+          const suggestionsId = uid();
+          setMessages(previous => [
+            ...previous,
+            {id: suggestionsId, role: "assistant", suggestions: data.followUpSuggestions}
+          ]);
+        }
+      } catch (error) {
+        if (error instanceof FaiApiError && error.code === "TIMEOUT") {
+          setMessages(previous =>
+            previous.map(m =>
+              m.id === pendingId
+                ? {...m, text: "It took too long to respond. Please try again.", loading: false}
+                : m
+            )
+          );
+        } else if (error instanceof FaiApiError && error.code === "NETWORK") {
+          setMessages(previous =>
+            previous.map(m =>
+              m.id === pendingId
+                ? {...m, text: "I can't reach my server right now. Please try again later.", loading: false}
+                : m
+            )
+          );
+        } else {
+          setMessages(previous =>
+            previous.map(m =>
+              m.id === pendingId
+                ? {...m, text: "Something went wrong. Please try again.", loading: false}
+                : m
+            )
+          );
+        }
+      } finally {
+        setLoading(false);
+        abortRef.current = null;
+      }
+    },
+    [loading, messages, currentSection, currentProject]
+  );
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    if (input.trim()) ask(input);
   };
 
-  const onSelect = event => {
-    const question = event.target.value;
-    event.target.selectedIndex = 0;
-    if (question) ask(question);
+  const handleKeyDown = event => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      if (input.trim()) ask(input);
+    }
+  };
+
+  const handleSuggestionClick = text => {
+    ask(text);
   };
 
   return (
@@ -164,7 +258,7 @@ export default function FaiChat() {
               </p>
               <p className="fai-status">
                 <span className="fai-dot" aria-hidden="true" />
-                Pick a question below.
+                {loading ? "Thinking…" : "Ask me anything about Fatma"}
               </p>
             </div>
             <div className="fai-header-actions">
@@ -192,12 +286,36 @@ export default function FaiChat() {
           <div className="fai-messages" ref={scrollRef}>
             {messages.map(message => (
               <div key={message.id} className={`fai-msg ${message.role}`}>
-                {message.role === "assistant" ? (
-                  <div className="fai-bubble">{renderMarkdown(message.text)}</div>
+                {message.suggestions ? (
+                  <div className="fai-suggestions">
+                    {message.suggestions.map(suggestion => (
+                      <button
+                        key={suggestion}
+                        type="button"
+                        className="fai-suggestion-chip"
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        disabled={loading}
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                ) : message.role === "assistant" ? (
+                  <div className="fai-bubble">
+                    {message.loading ? (
+                      <span className="fai-typing">
+                        <span className="fai-dot-anim" />
+                        <span className="fai-dot-anim" />
+                        <span className="fai-dot-anim" />
+                      </span>
+                    ) : (
+                      renderMarkdown(message.text)
+                    )}
+                  </div>
                 ) : (
                   <div className="fai-bubble fai-bubble-user">{message.text}</div>
                 )}
-                {message.role === "assistant" && message.id !== WELCOME_ID && (
+                {message.role === "assistant" && !message.loading && !message.suggestions && message.id !== WELCOME_ID && (
                   <button
                     type="button"
                     className="fai-copy"
@@ -209,33 +327,46 @@ export default function FaiChat() {
                 )}
               </div>
             ))}
+
+            {messages.length === 1 && (
+              <div className="fai-suggestions">
+                {SUGGESTIONS.map(suggestion => (
+                  <button
+                    key={suggestion}
+                    type="button"
+                    className="fai-suggestion-chip"
+                    onClick={() => handleSuggestionClick(suggestion)}
+                    disabled={loading}
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="fai-input">
-            <label className="fai-select-wrap">
-              <ChevronDown className="fai-chevron" aria-hidden="true" />
-              <select
-                ref={selectRef}
-                className="fai-select"
-                defaultValue=""
-                onChange={onSelect}
-                aria-label="Choose a question to ask F.A.I."
-              >
-                <option value="" disabled>
-                  Choose a question…
-                </option>
-                {QUESTION_GROUPS.map(group => (
-                  <optgroup key={group.label} label={group.label}>
-                    {group.questions.map(item => (
-                      <option key={item.q} value={item.q}>
-                        {item.q}
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-            </label>
-          </div>
+          <form className="fai-input" onSubmit={handleSubmit}>
+            <input
+              ref={inputRef}
+              type="text"
+              className="fai-text-input"
+              placeholder="Ask me anything…"
+              value={input}
+              onChange={event => setInput(event.target.value)}
+              onKeyDown={handleKeyDown}
+              disabled={loading}
+              aria-label="Type a message to F.A.I."
+              autoComplete="off"
+            />
+            <button
+              type="submit"
+              className="fai-send-btn"
+              disabled={loading || !input.trim()}
+              aria-label="Send message"
+            >
+              <Send />
+            </button>
+          </form>
         </div>
       )}
     </>

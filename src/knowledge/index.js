@@ -1,12 +1,10 @@
-// Static chat content. F.A.I. answers are stored locally in qa.js, so the chat
-// works without any backend or AI provider.
-
-export { QUESTION_GROUPS, findAnswer } from "./qa.js";
+// Static chat content. The welcome message is displayed on first open.
+// All other answers come from the Groq-powered backend via the chat API.
 
 export const WELCOME = `Hi! 👋
 
-I'm F.A.I. — Fatma's virtual assistant.
+I'm **F.A.I.** — Fatma's AI assistant.
 
 I know everything about Fatma's projects, experience, skills and journey.
 
-Pick a question from the menu below and I'll answer it right away.`;
+Ask me anything below or pick a suggestion to get started.`;

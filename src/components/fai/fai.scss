@@ -361,57 +361,158 @@
   color: var(--rose, #f08b9c);
 }
 
-/* Question picker */
+/* Suggestion chips */
+.fai-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+  animation: fai-in 0.35s ease both;
+}
+
+.fai-suggestion-chip {
+  flex: 0 1 auto;
+  border: 1px solid rgba(240, 139, 156, 0.3);
+  background: rgba(240, 139, 156, 0.08);
+  color: var(--rose, #f08b9c);
+  font: 12px/1.4 Manrope, sans-serif;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.fai-suggestion-chip:hover:not(:disabled) {
+  background: rgba(240, 139, 156, 0.18);
+  border-color: rgba(240, 139, 156, 0.5);
+  transform: translateY(-1px);
+}
+
+.fai-suggestion-chip:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.fai-suggestion-chip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.fai-suggestion-chip:focus-visible {
+  outline: 2px solid var(--rose, #f08b9c);
+  outline-offset: 2px;
+}
+
+/* Typing indicator */
+.fai-typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 0;
+}
+
+.fai-dot-anim {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted, #989792);
+  animation: fai-bounce 1.2s ease-in-out infinite;
+}
+
+.fai-dot-anim:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.fai-dot-anim:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Input area */
 .fai-input {
-  padding: 13px 14px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px 14px;
   border-top: 1px solid rgba(241, 238, 232, 0.1);
   background: rgba(10, 12, 15, 0.5);
 }
 
-.fai-select-wrap {
-  position: relative;
-  display: block;
-}
-
-.fai-select {
-  width: 100%;
-  appearance: none;
-  -webkit-appearance: none;
+.fai-text-input {
+  flex: 1;
   background: rgba(24, 27, 32, 0.85);
   border: 1px solid rgba(241, 238, 232, 0.14);
   border-radius: 13px;
   color: var(--paper, #f1eee8);
   font: 13px Manrope, sans-serif;
   line-height: 1.5;
-  padding: 12px 40px 12px 14px;
+  padding: 11px 14px;
   outline: none;
-  cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.fai-select:hover {
+.fai-text-input::placeholder {
+  color: rgba(152, 151, 146, 0.6);
+}
+
+.fai-text-input:hover {
   border-color: rgba(241, 238, 232, 0.28);
 }
 
-.fai-select:focus {
+.fai-text-input:focus {
   border-color: rgba(240, 139, 156, 0.6);
   box-shadow: 0 0 0 3px rgba(240, 139, 156, 0.12);
 }
 
-.fai-select:disabled {
+.fai-text-input:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.fai-chevron {
-  position: absolute;
-  right: 13px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  color: var(--muted, #989792);
-  pointer-events: none;
+.fai-send-btn {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(240, 139, 156, 0.4);
+  background: linear-gradient(135deg, rgba(240, 139, 156, 0.2), rgba(229, 118, 139, 0.15));
+  color: var(--rose, #f08b9c);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.fai-send-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.fai-send-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(240, 139, 156, 0.35), rgba(229, 118, 139, 0.28));
+  border-color: rgba(240, 139, 156, 0.65);
+  transform: scale(1.05);
+}
+
+.fai-send-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.fai-send-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.fai-send-btn:focus-visible {
+  outline: 2px solid var(--rose, #f08b9c);
+  outline-offset: 2px;
 }
 
 /* Animations */
@@ -433,6 +534,11 @@
 @keyframes fai-in {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fai-bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-4px); }
 }
 
 @media (max-width: 640px) {
@@ -467,7 +573,10 @@
 
   .fai-spark,
   .fai-dot,
-  .fai-bubble {
+  .fai-bubble,
+  .fai-suggestions,
+  .fai-suggestion-chip,
+  .fai-dot-anim {
     animation: none;
   }
 }
