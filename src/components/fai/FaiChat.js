@@ -149,7 +149,7 @@ export default function FaiChat() {
 
       try {
         const history = messages
-          .filter(m => m.id !== WELCOME_ID && !m.loading)
+          .filter(m => m.id !== WELCOME_ID && !m.loading && !m.suggestions && m.text)
           .map(m => ({role: m.role === "user" ? "user" : "assistant", content: m.text}));
 
         const data = await chat({
