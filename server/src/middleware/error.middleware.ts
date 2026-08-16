@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import type { Logger } from "pino";
-import { GeminiServiceError } from "../services/gemini.service.js";
-import type { GeminiErrorCode } from "../types/gemini.js";
+import { GroqServiceError } from "../services/groq.service.js";
+import type { ProviderErrorCode } from "../types/provider.js";
 import { HttpError } from "../utils/http.js";
 
 interface BodySyntaxError extends SyntaxError {
@@ -12,7 +12,7 @@ function isBodySyntaxError(error: unknown): error is BodySyntaxError {
   return error instanceof SyntaxError && typeof (error as BodySyntaxError).body !== "undefined";
 }
 
-const GEMINI_STATUS: Record<GeminiErrorCode, number> = {
+const PROVIDER_STATUS: Record<ProviderErrorCode, number> = {
   MISSING_API_KEY: 503,
   UNAUTHORIZED: 401,
   RATE_LIMIT: 429,
@@ -25,8 +25,8 @@ const GEMINI_STATUS: Record<GeminiErrorCode, number> = {
   BAD_REQUEST: 400
 };
 
-const GEMINI_MESSAGE: Record<GeminiErrorCode, string> = {
-  MISSING_API_KEY: "F.A.I.'s AI provider is not configured yet. Please set GEMINI_API_KEY on the server and restart.",
+const PROVIDER_MESSAGE: Record<ProviderErrorCode, string> = {
+  MISSING_API_KEY: "F.A.I.'s AI provider is not configured yet. Please set GROQ_API_KEY on the server and restart.",
   UNAUTHORIZED: "F.A.I.'s AI provider rejected the API key.",
   RATE_LIMIT: "Too many requests. Please wait a moment and try again.",
   QUOTA_EXCEEDED: "F.A.I. hit the AI provider's quota. Please try again later.",
@@ -54,10 +54,10 @@ export function createErrorHandler(logger: Logger) {
       return;
     }
 
-    if (error instanceof GeminiServiceError) {
+    if (error instanceof GroqServiceError) {
       logger.warn({ ...logFields(req), code: error.code }, "provider error");
-      res.status(GEMINI_STATUS[error.code]).json({
-        error: { code: error.code, message: GEMINI_MESSAGE[error.code] }
+      res.status(PROVIDER_STATUS[error.code]).json({
+        error: { code: error.code, message: PROVIDER_MESSAGE[error.code] }
       });
       return;
     }

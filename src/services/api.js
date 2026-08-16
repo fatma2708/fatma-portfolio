@@ -2,7 +2,7 @@
  * F.A.I. — backend API client.
  *
  * All chat traffic goes through the F.A.I. server (see `server/`). The
- * Gemini API key lives ONLY on the server, never in the browser bundle.
+ * Groq API key lives ONLY on the server, never in the browser bundle.
  *
  * Contract (POST {FAI_API_URL}/api/chat):
  *   body    { message, conversationHistory?, currentSection?,

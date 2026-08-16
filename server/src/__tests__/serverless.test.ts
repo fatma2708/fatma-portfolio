@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { buildDependencies } from "../container.js";
 import { createHandler } from "../serverless.js";
-import type { ChatProvider } from "../types/gemini.js";
+import type { ChatProvider } from "../types/provider.js";
 
 type WrappedHandler = (event: unknown, context: unknown) => Promise<{ statusCode: number; body: string }>;
 

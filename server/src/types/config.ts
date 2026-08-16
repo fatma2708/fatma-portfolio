@@ -4,11 +4,11 @@ export interface AppConfig {
   env: AppEnvironment;
   port: number;
   host: string;
-  geminiApiKey: string;
-  geminiModel: string;
-  geminiTemperature: number;
-  geminiMaxTokens: number;
-  geminiTimeoutMs: number;
+  groqApiKey: string;
+  groqModel: string;
+  groqTemperature: number;
+  groqMaxTokens: number;
+  groqTimeoutMs: number;
   corsOrigins: string[];
   rateLimitMax: number;
   rateLimitWindowMs: number;

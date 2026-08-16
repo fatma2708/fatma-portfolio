@@ -4,7 +4,7 @@ Hi, I'm **Fatma** — a second-year Computer Engineering student at **ESPRIT**, 
 
 This is the repo of my personal portfolio, **FATMA OS**, a playful desktop-style website where you can explore my projects, skills, experience and more — and ask my AI assistant, **F.A.I.**, about anything you want to know.
 
-> Live site: [https://fatma-portfolio.vercel.app](https://fatma-portfolio-cyan.vercel.app)
+> Live site: [https://fatmabenmlouka.dev](https://fatmabenmlouka.dev)
 
 ## About me
 
@@ -44,7 +44,7 @@ This is the repo of my personal portfolio, **FATMA OS**, a playful desktop-style
 
 - A desktop-inspired personal OS interface built with **React** and **Sass**, animated with **GSAP** and **Lenis**
 - **F.A.I.** (Fatma Artificial Intelligence) — a chat assistant with a curated list of questions and instant answers about Fatma's projects, experience and skills
-- A secure backend (`server/`) built with **Express 5 + TypeScript**, with validation, rate limiting, security headers and a Gemini-ready chat API
+- A secure backend (`server/`) built with **Express 5 + TypeScript**, with validation, rate limiting, security headers and a Groq-powered chat API
 - Deployed with **Vercel** (frontend) and **Railway** (backend), with CI/CD via GitHub Actions
 
 ### Run locally
@@ -57,7 +57,7 @@ npm start                    # http://localhost:3000
 # Backend (optional — for the F.A.I. chat API)
 cd server
 npm install
-cp .env.example .env         # add GEMINI_API_KEY if you want Gemini
+cp .env.example .env         # add GROQ_API_KEY to enable the chatbot
 npm run dev                  # http://localhost:4000
 ```
 

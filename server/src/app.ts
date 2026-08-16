@@ -3,7 +3,7 @@ import express from "express";
 import helmet from "helmet";
 import type { Logger } from "pino";
 import type { AppConfig } from "./types/config.js";
-import type { ChatProvider } from "./types/gemini.js";
+import type { ChatProvider } from "./types/provider.js";
 import type { KnowledgeService } from "./services/knowledge.service.js";
 import type { PromptBuilder } from "./services/prompt-builder.service.js";
 import type { SafetyService } from "./services/safety.service.js";

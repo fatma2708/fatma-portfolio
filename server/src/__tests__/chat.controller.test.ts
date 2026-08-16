@@ -5,7 +5,7 @@ import { KnowledgeService } from "../services/knowledge.service.js";
 import { PromptBuilder } from "../services/prompt-builder.service.js";
 import { SafetyService } from "../services/safety.service.js";
 import { SuggestionService } from "../services/suggestion.service.js";
-import type { ChatProvider, ProviderInput } from "../types/gemini.js";
+import type { ChatProvider, ProviderInput } from "../types/provider.js";
 import type { ChatRequest } from "../types/chat.js";
 
 async function makeController(provider: ChatProvider): Promise<ChatController> {

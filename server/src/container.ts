@@ -1,13 +1,13 @@
 import "dotenv/config";
 import type { Logger } from "pino";
 import { loadConfig } from "./config/env.js";
-import { GeminiService } from "./services/gemini.service.js";
+import { GroqService } from "./services/groq.service.js";
 import { KnowledgeService } from "./services/knowledge.service.js";
 import { PromptBuilder } from "./services/prompt-builder.service.js";
 import { SafetyService } from "./services/safety.service.js";
 import { SuggestionService } from "./services/suggestion.service.js";
 import type { AppConfig } from "./types/config.js";
-import type { ChatProvider } from "./types/gemini.js";
+import type { ChatProvider } from "./types/provider.js";
 import { createLogger } from "./utils/logger.js";
 import type { AppDependencies } from "./app.js";
 
@@ -28,7 +28,7 @@ export async function buildDependencies(overrides: DependencyOverrides = {}): Pr
     await knowledge.load();
   }
 
-  const provider: ChatProvider = overrides.provider ?? new GeminiService(config);
+  const provider: ChatProvider = overrides.provider ?? new GroqService(config);
   const promptBuilder: PromptBuilder = overrides.promptBuilder ?? new PromptBuilder(knowledge);
   const safety: SafetyService = overrides.safety ?? new SafetyService();
   const suggestions: SuggestionService = overrides.suggestions ?? new SuggestionService(knowledge);

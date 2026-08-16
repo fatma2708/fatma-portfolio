@@ -1,6 +1,6 @@
 import type { ChatMessage } from "./chat.js";
 
-export type GeminiErrorCode =
+export type ProviderErrorCode =
   | "MISSING_API_KEY"
   | "UNAUTHORIZED"
   | "RATE_LIMIT"
@@ -12,8 +12,10 @@ export type GeminiErrorCode =
   | "UPSTREAM"
   | "BAD_REQUEST";
 
+export type GroqErrorCode = ProviderErrorCode;
+
 /**
- * Provider-agnostic contract. Swap Gemini for OpenAI, Claude, etc.
+ * Provider-agnostic contract. Swap Groq for OpenAI, Claude, etc.
  * by implementing this interface — the frontend never changes.
  */
 export interface ChatProvider {
@@ -26,27 +28,17 @@ export interface ProviderInput {
   messages: ChatMessage[];
 }
 
-export interface GeminiPart {
-  text?: string;
+export interface GroqChoice {
+  message?: { role?: string; content?: string };
+  finish_reason?: string;
 }
 
-export interface GeminiContent {
-  parts?: GeminiPart[];
-  role?: string;
-}
-
-export interface GeminiCandidate {
-  content?: GeminiContent;
-  finishReason?: string;
-}
-
-export interface GeminiApiError {
+export interface GroqApiError {
   message?: string;
-  status?: string;
+  error?: { message?: string; type?: string };
 }
 
-export interface GeminiResponse {
-  candidates?: GeminiCandidate[];
-  promptFeedback?: { blockReason?: string };
-  error?: GeminiApiError;
+export interface GroqResponse {
+  choices?: GroqChoice[];
+  error?: GroqApiError;
 }

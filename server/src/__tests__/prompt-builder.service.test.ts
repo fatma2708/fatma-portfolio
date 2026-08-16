@@ -58,7 +58,7 @@ describe("PromptBuilder", () => {
 
   it("never embeds secrets or config references", () => {
     const prompt = builder.buildSystem("en", "", "");
-    expect(prompt).not.toContain("GEMINI_API_KEY");
+    expect(prompt).not.toContain("GROQ_API_KEY");
     expect(prompt).not.toMatch(/api.?key/i);
   });
 });

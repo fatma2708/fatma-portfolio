@@ -17,7 +17,7 @@ export function createLogger(config: AppConfig): Logger {
         "req.headers.authorization",
         "req.headers['x-api-key']",
         "*.apiKey",
-        "*.GEMINI_API_KEY",
+        "*.GROQ_API_KEY",
         "*.password",
         "*.token"
       ],

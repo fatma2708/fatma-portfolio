@@ -1,18 +1,18 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { GeminiService } from "../services/gemini.service.js";
+import { GroqService } from "../services/groq.service.js";
 import type { AppConfig } from "../types/config.js";
-import type { ProviderInput } from "../types/gemini.js";
+import type { ProviderInput } from "../types/provider.js";
 
 function makeConfig(partial: Partial<AppConfig> = {}): AppConfig {
   return {
     env: "test",
     port: 4000,
     host: "127.0.0.1",
-    geminiApiKey: "test-key",
-    geminiModel: "gemini-2.0-flash",
-    geminiTemperature: 0.6,
-    geminiMaxTokens: 1024,
-    geminiTimeoutMs: 5000,
+    groqApiKey: "test-key",
+    groqModel: "llama-3.3-70b-versatile",
+    groqTemperature: 0.6,
+    groqMaxTokens: 1024,
+    groqTimeoutMs: 5000,
     corsOrigins: ["http://localhost:3000"],
     rateLimitMax: 20,
     rateLimitWindowMs: 60_000,
@@ -35,7 +35,7 @@ const input: ProviderInput = {
   messages: [{ role: "user", content: "Hi" }]
 };
 
-describe("GeminiService", () => {
+describe("GroqService", () => {
   afterEach(() => {
     vi.unstubAllGlobals();
     vi.restoreAllMocks();
@@ -45,49 +45,57 @@ describe("GeminiService", () => {
     vi.stubGlobal(
       "fetch",
       vi.fn(async () =>
-        jsonResponse({ candidates: [{ content: { parts: [{ text: "Hello from Gemini" }] }, finishReason: "STOP" }] })
+        jsonResponse({ choices: [{ message: { role: "assistant", content: "Hello from Groq" }, finish_reason: "stop" }] })
       )
     );
 
-    const service = new GeminiService(makeConfig());
-    await expect(service.generateText(input)).resolves.toBe("Hello from Gemini");
+    const service = new GroqService(makeConfig());
+    await expect(service.generateText(input)).resolves.toBe("Hello from Groq");
   });
 
-  it("maps assistant roles to Gemini's model role", async () => {
+  it("sends the system prompt as the first message with role system", async () => {
     const fetchMock = vi.fn(async (_url: unknown, _init: RequestInit) => {
-      return jsonResponse({ candidates: [{ content: { parts: [{ text: "ok" }] } }] });
+      return jsonResponse({ choices: [{ message: { content: "ok" } }] });
     });
     vi.stubGlobal("fetch", fetchMock);
 
-    const service = new GeminiService(makeConfig());
-    await service.generateText({
-      systemPrompt: "s",
-      messages: [
-        { role: "assistant", content: "previous answer" },
-        { role: "user", content: "next question" }
-      ]
-    });
-
-    const requestBody = JSON.parse(String(fetchMock.mock.calls[0][1].body));
-    expect(requestBody.contents[0].role).toBe("model");
-    expect(requestBody.contents[1].role).toBe("user");
-  });
-
-  it("sends the system prompt in systemInstruction", async () => {
-    const fetchMock = vi.fn(async (_url: unknown, _init: RequestInit) => {
-      return jsonResponse({ candidates: [{ content: { parts: [{ text: "ok" }] } }] });
-    });
-    vi.stubGlobal("fetch", fetchMock);
-
-    const service = new GeminiService(makeConfig());
+    const service = new GroqService(makeConfig());
     await service.generateText({ systemPrompt: "SECRET SYSTEM PROMPT", messages: [] });
 
     const requestBody = JSON.parse(String(fetchMock.mock.calls[0][1].body));
-    expect(requestBody.systemInstruction.parts[0].text).toBe("SECRET SYSTEM PROMPT");
+    expect(requestBody.messages[0].role).toBe("system");
+    expect(requestBody.messages[0].content).toBe("SECRET SYSTEM PROMPT");
+  });
+
+  it("passes the model and temperature in the request body", async () => {
+    const fetchMock = vi.fn(async (_url: unknown, _init: RequestInit) => {
+      return jsonResponse({ choices: [{ message: { content: "ok" } }] });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const service = new GroqService(makeConfig());
+    await service.generateText(input);
+
+    const requestBody = JSON.parse(String(fetchMock.mock.calls[0][1].body));
+    expect(requestBody.model).toBe("llama-3.3-70b-versatile");
+    expect(requestBody.temperature).toBe(0.6);
+  });
+
+  it("sends the Authorization header with Bearer token", async () => {
+    const fetchMock = vi.fn(async (_url: unknown, _init: RequestInit) => {
+      return jsonResponse({ choices: [{ message: { content: "ok" } }] });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const service = new GroqService(makeConfig());
+    await service.generateText(input);
+
+    const headers = fetchMock.mock.calls[0][1].headers as Record<string, string>;
+    expect(headers.Authorization).toBe("Bearer test-key");
   });
 
   it("throws MISSING_API_KEY when no key is configured", async () => {
-    const service = new GeminiService(makeConfig({ geminiApiKey: "" }));
+    const service = new GroqService(makeConfig({ groqApiKey: "" }));
     await expect(service.generateText(input)).rejects.toMatchObject({ code: "MISSING_API_KEY" });
   });
 
@@ -101,7 +109,7 @@ describe("GeminiService", () => {
     [503, "UPSTREAM"]
   ])("maps HTTP %i to code %s", async (status, code) => {
     vi.stubGlobal("fetch", vi.fn(async () => jsonResponse({ error: { message: "boom" } }, status)));
-    const service = new GeminiService(makeConfig());
+    const service = new GroqService(makeConfig());
     await expect(service.generateText(input)).rejects.toMatchObject({ code });
   });
 
@@ -112,33 +120,13 @@ describe("GeminiService", () => {
         jsonResponse({ error: { message: "Quota exceeded for quota metric" } }, 429)
       )
     );
-    const service = new GeminiService(makeConfig());
+    const service = new GroqService(makeConfig());
     await expect(service.generateText(input)).rejects.toMatchObject({ code: "QUOTA_EXCEEDED" });
   });
 
-  it("throws BLOCKED on a safety finish reason", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(async () => jsonResponse({ candidates: [{ finishReason: "SAFETY" }] }))
-    );
-    const service = new GeminiService(makeConfig());
-    await expect(service.generateText(input)).rejects.toMatchObject({ code: "BLOCKED" });
-  });
-
-  it("throws BLOCKED when prompt feedback reports a block reason", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(async () =>
-        jsonResponse({ promptFeedback: { blockReason: "SAFETY" }, candidates: [] })
-      )
-    );
-    const service = new GeminiService(makeConfig());
-    await expect(service.generateText(input)).rejects.toMatchObject({ code: "BLOCKED" });
-  });
-
   it("throws EMPTY when no text is returned", async () => {
-    vi.stubGlobal("fetch", vi.fn(async () => jsonResponse({ candidates: [{ content: { parts: [] } }] })));
-    const service = new GeminiService(makeConfig());
+    vi.stubGlobal("fetch", vi.fn(async () => jsonResponse({ choices: [{ message: { content: "" } }] })));
+    const service = new GroqService(makeConfig());
     await expect(service.generateText(input)).rejects.toMatchObject({ code: "EMPTY" });
   });
 
@@ -157,7 +145,7 @@ describe("GeminiService", () => {
       })
     );
 
-    const service = new GeminiService(makeConfig({ geminiTimeoutMs: 20 }));
+    const service = new GroqService(makeConfig({ groqTimeoutMs: 20 }));
     await expect(service.generateText(input)).rejects.toMatchObject({ code: "TIMEOUT" });
   });
 
@@ -165,7 +153,7 @@ describe("GeminiService", () => {
     vi.stubGlobal("fetch", vi.fn(async () => {
       throw new Error("ECONNREFUSED");
     }));
-    const service = new GeminiService(makeConfig());
+    const service = new GroqService(makeConfig());
     await expect(service.generateText(input)).rejects.toMatchObject({ code: "NETWORK" });
   });
 });

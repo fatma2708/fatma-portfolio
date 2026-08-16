@@ -2,7 +2,7 @@ import type { Server } from "node:http";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createApp } from "../app.js";
 import { buildDependencies } from "../container.js";
-import type { ChatProvider } from "../types/gemini.js";
+import type { ChatProvider } from "../types/provider.js";
 
 const fakeProvider: ChatProvider = {
   name: "fake",

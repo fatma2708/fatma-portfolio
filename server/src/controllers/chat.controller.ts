@@ -1,5 +1,5 @@
 import type { Request } from "express";
-import type { ChatProvider } from "../types/gemini.js";
+import type { ChatProvider } from "../types/provider.js";
 import type { ChatRequest, ChatResponse } from "../types/chat.js";
 import type { PromptBuilder } from "../services/prompt-builder.service.js";
 import type { SafetyService } from "../services/safety.service.js";
