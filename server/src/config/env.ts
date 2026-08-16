@@ -9,7 +9,7 @@ const envSchema = z.object({
   PORT: z.coerce.number().int().min(0).max(65535).default(4000),
   HOST: z.string().trim().min(1).default("0.0.0.0"),
   GROQ_API_KEY: z.string().trim().default(""),
-  GROQ_MODEL: z.string().trim().min(1).default("meta-llama/llama-4-scout-17b-16e-instruct"),
+  GROQ_MODEL: z.string().trim().min(1).default("llama-3.3-70b-versatile"),
   GROQ_TEMPERATURE: z.coerce.number().min(0).max(2).default(0.6),
   GROQ_MAX_TOKENS: z.coerce.number().int().positive().default(1024),
   GROQ_TIMEOUT_MS: z.coerce.number().int().positive().default(60_000),
