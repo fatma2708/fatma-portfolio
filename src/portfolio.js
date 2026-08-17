@@ -373,7 +373,7 @@ const contactInfo = {
   subtitle:
     "Discuss a project or just want to say hi? My Inbox is open for all.",
   number: "",
-  email_address: "fatmabenmlouka38@gmail.com"
+  email_address: "fatma.benmlouka@esprit.tn"
 };
 
 // Twitter Section
