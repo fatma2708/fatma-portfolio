@@ -431,88 +431,58 @@
   animation-delay: 0.3s;
 }
 
-/* Input area */
-.fai-input {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px 14px;
+/* Dropdown area */
+.fai-dropdown-area {
+  padding: 12px 14px 16px;
   border-top: 1px solid rgba(241, 238, 232, 0.1);
   background: rgba(10, 12, 15, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.fai-text-input {
-  flex: 1;
-  background: rgba(24, 27, 32, 0.85);
+.fai-question-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(24, 27, 32, 0.85) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23f08b9c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>") no-repeat right 14px center;
   border: 1px solid rgba(241, 238, 232, 0.14);
   border-radius: 13px;
   color: var(--paper, #f1eee8);
   font: 13px Manrope, sans-serif;
   line-height: 1.5;
-  padding: 11px 14px;
+  padding: 11px 38px 11px 14px;
   outline: none;
+  cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.fai-text-input::placeholder {
-  color: rgba(152, 151, 146, 0.6);
-}
-
-.fai-text-input:hover {
+.fai-question-select:hover {
   border-color: rgba(241, 238, 232, 0.28);
 }
 
-.fai-text-input:focus {
+.fai-question-select:focus {
   border-color: rgba(240, 139, 156, 0.6);
   box-shadow: 0 0 0 3px rgba(240, 139, 156, 0.12);
 }
 
-.fai-text-input:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.fai-send-btn {
-  flex: 0 0 auto;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  border: 1px solid rgba(240, 139, 156, 0.4);
-  background: linear-gradient(135deg, rgba(240, 139, 156, 0.2), rgba(229, 118, 139, 0.15));
+.fai-question-select optgroup {
   color: var(--rose, #f08b9c);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.15s ease,
-    opacity 0.2s ease;
+  font-weight: 700;
+  background: #1b1e24;
 }
 
-.fai-send-btn svg {
-  width: 17px;
-  height: 17px;
+.fai-question-select option {
+  color: #e6e2dc;
+  font: 13px Manrope, sans-serif;
+  background: #1b1e24;
 }
 
-.fai-send-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, rgba(240, 139, 156, 0.35), rgba(229, 118, 139, 0.28));
-  border-color: rgba(240, 139, 156, 0.65);
-  transform: scale(1.05);
-}
-
-.fai-send-btn:active:not(:disabled) {
-  transform: scale(0.95);
-}
-
-.fai-send-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-.fai-send-btn:focus-visible {
-  outline: 2px solid var(--rose, #f08b9c);
-  outline-offset: 2px;
+.fai-dropdown-hint {
+  margin: 0;
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+  color: var(--muted, #989792);
 }
 
 /* Animations */

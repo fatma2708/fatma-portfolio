@@ -3,8 +3,8 @@
 
 export const WELCOME = `Hi! 👋
 
-I'm **F.A.I.** — Fatma's AI assistant.
+I'm **F.A.I.** — here to help you get to know Fatma.
 
-I know everything about Fatma's projects, experience, skills and journey.
+I can tell you about her projects, experience, skills and journey.
 
-Ask me anything below or pick a suggestion to get started.`;
+Pick a question from the dropdown below and I'll answer right away.`;

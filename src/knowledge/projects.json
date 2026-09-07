@@ -73,6 +73,21 @@
         "Achievements: unlock badges as you watch (or don't watch)."
       ],
       "demo": "https://github.com/fatma2708/fyp-analyzer"
+    },
+    {
+      "name": "FATMA OS",
+      "type": "Personal Portfolio & AI Assistant",
+      "description": "A desktop-inspired portfolio that doubles as a living system — projects, skills, journey, and an AI assistant that knows every detail. Built with React and Sass, animated with GSAP and Lenis, and powered by a secure Express + TypeScript backend with a Groq-powered chat API.",
+      "stack": ["React", "Sass", "GSAP", "Lenis", "Express", "TypeScript", "Groq AI", "Vercel", "Railway", "GitHub Actions", "Docker", "Nginx"],
+      "highlights": [
+        "Desktop OS-inspired single-page interface with smooth GSAP and Lenis animations.",
+        "F.A.I. (Fatma Artificial Intelligence) — a Groq-powered chat assistant with curated Q&A about projects and skills.",
+        "Secure Express 5 + TypeScript backend with rate limiting, validation, and security headers.",
+        "CI/CD pipeline with GitHub Actions, Docker support, and Nginx configuration.",
+        "Frontend deployed on Vercel, backend deployed on Railway.",
+        "Interactive project archive, skill constellation, timeline, and certificate carousel."
+      ],
+      "demo": "https://github.com/fatma2708/fatma-portfolio"
     }
   ]
 }
