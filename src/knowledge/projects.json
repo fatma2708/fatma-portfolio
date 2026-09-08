@@ -88,6 +88,21 @@
         "Interactive project archive, skill constellation, timeline, and certificate carousel."
       ],
       "demo": "https://github.com/fatma2708/fatma-portfolio"
+    },
+    {
+      "name": "CloudPilot AI",
+      "type": "Terraform Cloud Analyzer",
+      "description": "Analyze, score, and optimize your Terraform infrastructure across 10 cloud providers. Point it at any Terraform or OpenTofu repo and it parses every resource, prices it across AWS, Azure, GCP, DigitalOcean, Hetzner, Scaleway, OVHcloud, Oracle, Vultr, and Linode, produces a production-readiness score, explains the evidence it used — and flags what it could not inspect.",
+      "stack": ["Python", "FastAPI", "Next.js", "TypeScript", "PostgreSQL", "HCL2", "Machine Learning", "Docker", "CI/CD"],
+      "highlights": [
+        "Custom HCL2 parser — no Terraform binary required, with source file and line-number provenance.",
+        "Multi-cloud cost engine pricing the same architecture on 10 providers.",
+        "Weighted 0–100 production-readiness score across 8 dimensions with explicit evidence coverage.",
+        "Honest evidence coverage — flags modules it could not inspect instead of guessing.",
+        "FinOps dashboard with rightsizing, spot-instance opportunities, and cost outlooks.",
+        "AI-assisted analysis with a deterministic rule engine, optional LLM review, and a local risk-intelligence model."
+      ],
+      "demo": "https://github.com/fatma2708/cloudscanner"
     }
   ]
 }

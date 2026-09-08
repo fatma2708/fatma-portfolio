@@ -56,7 +56,7 @@ export const QUESTION_GROUPS = [
     questions: [
       {
         q: "What projects has Fatma built?",
-        a: "Here are the projects I'm most proud of:\n\n- **FoundersLab** — an intelligent startup incubation platform (Angular, Spring Boot, ML scoring, deployed on a private cloud).\n- **StackPilot** — a private OpenStack cloud infrastructure with IaC, Kubernetes and observability.\n- **AutoMatch** — a real-time AI car valuation API with a Next.js frontend.\n- **AI Psychometric Assessment Platform** — AI-powered assessments with automated analysis pipelines.\n- **FITSYNC** — a sports management platform for tournaments, teams and athlete performance.\n- **FYP Cooked** — a private, on-device AI browser extension that explains your Instagram feed."
+        a: "Here are the projects I'm most proud of:\n\n- **FoundersLab** — an intelligent startup incubation platform (Angular, Spring Boot, ML scoring, deployed on a private cloud).\n- **StackPilot** — a private OpenStack cloud infrastructure with IaC, Kubernetes and observability.\n- **AutoMatch** — a real-time AI car valuation API with a Next.js frontend.\n- **AI Psychometric Assessment Platform** — AI-powered assessments with automated analysis pipelines.\n- **FITSYNC** — a sports management platform for tournaments, teams and athlete performance.\n- **FYP Cooked** — a private, on-device AI browser extension that explains your Instagram feed.\n- **CloudPilot AI** — a Terraform analyzer that prices infrastructure across 10 cloud providers and scores production readiness."
       },
       {
         q: "What is Fatma's favorite project?",
