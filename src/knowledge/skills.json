@@ -2,23 +2,27 @@
   "categories": [
     {
       "category": "Cloud",
-      "skills": ["Docker", "Kubernetes", "Terraform", "Ansible", "OpenStack", "CI/CD", "Linux"]
+      "skills": ["Docker", "Kubernetes", "Terraform", "Ansible", "OpenStack", "CI/CD", "GitHub Actions", "Vercel", "Linux"]
     },
     {
       "category": "Backend",
-      "skills": ["Spring Boot", "Flask", "Django", "REST APIs"]
+      "skills": ["Spring Boot", "Flask", "Django", "REST APIs", "Supabase (PostgreSQL, Row Level Security, Auth, Storage, Edge Functions)", "Deno"]
     },
     {
       "category": "Frontend",
-      "skills": ["Angular", "Next.js", "JavaFX"]
+      "skills": ["Angular", "Next.js", "React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui", "TanStack Query", "JavaFX"]
     },
     {
       "category": "Machine Learning",
-      "skills": ["Regression", "Classification", "Clustering", "Decision Trees", "Pandas", "NumPy"]
+      "skills": ["Regression", "Classification", "Clustering", "Decision Trees", "Pandas", "NumPy", "scikit-learn", "SHAP", "Nested cross-validation", "Statistical testing (permutation, bootstrap, FDR)", "LLM integration (OpenAI-compatible APIs, Groq)"]
     },
     {
       "category": "Programming",
-      "skills": ["Python", "Java", "JavaScript", "PHP", "C#", "C", "C++"]
+      "skills": ["Python", "Java", "JavaScript", "Go", "PHP", "C#", "C", "C++"]
+    },
+    {
+      "category": "Data & Research Engineering",
+      "skills": ["Snakemake", "Reproducible pipelines", "Bioinformatics (Kraken2, Bracken, Bowtie2, fastp)"]
     },
     {
       "category": "Design",

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" role="img" aria-labelledby="title">
+  <title id="title">Mini ATS: Kanban hiring pipeline with an AI assessment panel</title>
+  <defs>
+    <pattern id="dots" width="23" height="23" patternUnits="userSpaceOnUse">
+      <circle cx="11.5" cy="11.5" r="1" fill="#2a2e35"/>
+    </pattern>
+  </defs>
+  <rect width="920" height="560" fill="#0d0f12"/>
+  <rect width="920" height="560" fill="url(#dots)"/>
+  <g font-family="'DM Mono', ui-monospace, monospace" font-size="13" letter-spacing="1.4">
+    <text x="40" y="52" fill="#f08b9c">MINI ATS / HIRING PIPELINE</text>
+    <rect x="40" y="70" width="840" height="1" fill="#2a2e35"/>
+
+    <!-- column 1 -->
+    <text x="40" y="112" fill="#989792">APPLIED</text>
+    <rect x="40" y="128" width="200" height="86" fill="#15181d" stroke="#2a2e35"/>
+    <rect x="58" y="148" width="110" height="10" fill="#f1eee8" opacity=".85"/>
+    <rect x="58" y="170" width="150" height="7" fill="#989792" opacity=".5"/>
+    <rect x="58" y="188" width="90" height="7" fill="#989792" opacity=".5"/>
+    <rect x="40" y="228" width="200" height="86" fill="#15181d" stroke="#2a2e35"/>
+    <rect x="58" y="248" width="130" height="10" fill="#f1eee8" opacity=".85"/>
+    <rect x="58" y="270" width="120" height="7" fill="#989792" opacity=".5"/>
+    <rect x="58" y="288" width="70" height="7" fill="#989792" opacity=".5"/>
+
+    <!-- column 2 -->
+    <text x="270" y="112" fill="#989792">INTERVIEW</text>
+    <rect x="270" y="128" width="200" height="86" fill="#15181d" stroke="#2a2e35"/>
+    <rect x="288" y="148" width="100" height="10" fill="#f1eee8" opacity=".85"/>
+    <rect x="288" y="170" width="140" height="7" fill="#989792" opacity=".5"/>
+    <rect x="288" y="188" width="80" height="7" fill="#989792" opacity=".5"/>
+    <rect x="270" y="228" width="200" height="86" fill="none" stroke="#f08b9c" stroke-dasharray="6 6" opacity=".7"/>
+
+    <!-- column 3 -->
+    <text x="500" y="112" fill="#989792">OFFER</text>
+    <rect x="500" y="128" width="200" height="86" fill="#15181d" stroke="#2a2e35"/>
+    <rect x="518" y="148" width="120" height="10" fill="#f1eee8" opacity=".85"/>
+    <rect x="518" y="170" width="130" height="7" fill="#989792" opacity=".5"/>
+    <rect x="518" y="188" width="60" height="7" fill="#989792" opacity=".5"/>
+
+    <!-- dragged card -->
+    <g transform="translate(300 250) rotate(-4)">
+      <rect x="0" y="0" width="200" height="86" fill="#1c2027" stroke="#f08b9c" stroke-width="2"/>
+      <rect x="18" y="20" width="120" height="10" fill="#f1eee8"/>
+      <rect x="18" y="42" width="150" height="7" fill="#989792" opacity=".6"/>
+      <rect x="18" y="60" width="96" height="7" fill="#989792" opacity=".6"/>
+    </g>
+
+    <!-- AI assessment panel -->
+    <rect x="40" y="356" width="840" height="164" fill="#15181d" stroke="#2a2e35"/>
+    <text x="64" y="392" fill="#f08b9c">ASSESS WITH AI</text>
+    <text x="64" y="428" fill="#989792" font-size="11">CV.PDF  →  JOB DESCRIPTION</text>
+    <text x="360" y="392" fill="#989792" font-size="11">STRENGTHS</text>
+    <rect x="360" y="408" width="210" height="8" fill="#c4e778" opacity=".75"/>
+    <rect x="360" y="426" width="160" height="8" fill="#c4e778" opacity=".75"/>
+    <rect x="360" y="444" width="185" height="8" fill="#c4e778" opacity=".75"/>
+    <text x="620" y="392" fill="#989792" font-size="11">GAPS</text>
+    <rect x="620" y="408" width="170" height="8" fill="#ffad78" opacity=".75"/>
+    <rect x="620" y="426" width="120" height="8" fill="#ffad78" opacity=".75"/>
+    <text x="64" y="488" fill="#f1eee8" font-size="11">RECOMMENDATION</text>
+    <rect x="200" y="479" width="370" height="10" fill="#f08b9c" opacity=".85"/>
+    <rect x="620" y="474" width="236" height="22" fill="none" stroke="#2a2e35"/>
+    <text x="634" y="489" fill="#989792" font-size="10">ROW LEVEL SECURITY · TENANT</text>
+  </g>
+</svg>

@@ -67,6 +67,6 @@ Deployment is handled by Vercel (frontend) and Railway (backend); CI/CD runs on 
 ## Contact
 
 - Email: fatmabenmlouka38@gmail.com
-- LinkedIn: [fatma-ben-mlouka](https://www.linkedin.com/in/fatma-ben-mlouka-229a0b213/)
+- LinkedIn: [fatma-ben-mlouka](https://www.linkedin.com/in/fatma-ben-mlouka-229a0b213)
 - GitHub: [fatma2708](https://github.com/fatma2708)
 - A downloadable CV is available on the portfolio website.
