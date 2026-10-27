@@ -103,6 +103,38 @@
         "AI-assisted analysis with a deterministic rule engine, optional LLM review, and a local risk-intelligence model."
       ],
       "demo": "https://github.com/fatma2708/cloudscanner"
+    },
+    {
+      "name": "IBS vs NCGS",
+      "type": "Exploratory ML Research",
+      "description": "Can gut bacteria tell irritable bowel syndrome (IBS) apart from non-celiac gluten sensitivity (NCGS)? An exploratory ML research project on public stool metagenomes (PRJNA981497, Dixit et al. 2026, mSphere), reprocessed from raw sequencing reads on free compute (Kaggle). It is exploratory, with honest limits: a small cohort (n = 28, 14 IBS vs 14 NCGS) and no external validation yet. It is not a diagnostic tool.",
+      "stack": ["Python", "scikit-learn", "SHAP", "Snakemake", "Docker", "Bioinformatics", "Statistics", "CI"],
+      "highlights": [
+        "Resumable fastp → Bowtie2 (host read removal) → Kraken2 → Bracken pipeline built for a 12 h CPU limit, with a Snakemake workflow, Docker, tests and GitHub Actions CI.",
+        "Logistic regression on CLR-transformed abundances with nested cross-validation and a guard test against data leakage.",
+        "SHAP, DeLong and bootstrap confidence intervals, calibrated permutation tests and FDR correction.",
+        "AUC ≈ 0.8 (permutation p = 0.02); the pipeline agrees with the original paper (9 of the top 30 taxa overlap).",
+        "Less Anaerostipes in IBS (q = 0.026); Klebsiella is kept as a hypothesis, not a result.",
+        "A selection-bias trap was caught and corrected (0.95 → 0.64–0.68).",
+        "Frozen model and a pre-registered external-validation script."
+      ],
+      "demo": "https://github.com/fatma2708/ibs-ncgs-microbiome-ml"
+    },
+    {
+      "name": "Mini ATS",
+      "type": "AI-Assisted Applicant Tracking System",
+      "description": "A multi-tenant applicant tracking system with a Kanban hiring pipeline, job management, and an \"Assess with AI\" feature that compares a candidate's CV with the job description and returns a score, strengths, gaps and a recommendation.",
+      "stack": ["React 19", "TypeScript", "Vite", "Tailwind CSS v4", "shadcn/ui", "TanStack Query", "dnd-kit", "Supabase", "PostgreSQL", "Deno", "Groq", "Vercel"],
+      "highlights": [
+        "Kanban hiring pipeline with drag and drop, optimistic updates and keyboard accessibility.",
+        "Admin console with a \"viewing as customer\" mode, and filters stored in the URL.",
+        "CV upload as PDF with text extraction in the browser (pdf.js).",
+        "\"Assess with AI\" Supabase Edge Function using an OpenAI-compatible API (Groq).",
+        "Postgres Row Level Security per tenant, roles from app metadata, admin-only account creation server-side and a private storage bucket.",
+        "The service role key is never in the frontend.",
+        "Source code: https://github.com/fatma2708/mini-ats"
+      ],
+      "demo": "https://mini-ats-khaki.vercel.app"
     }
   ]
 }
